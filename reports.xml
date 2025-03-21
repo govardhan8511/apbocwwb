@@ -1,0 +1,236 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <constant name="struts.multipart.saveDir" value="/tmp" />
+    
+	<package name="Reports" extends="struts-default">
+ 	
+        
+        <action name="all_mobile_aadhar_seed_report"  class="Reports.Mobile_AadharSeed_Report" method="all_mobile_aadharseed_report">
+        <result name="success">/All_Mobile_AadhaarSeeding_result.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action>
+        
+        
+        
+<!-- =================== Login Reports ======================= -->  
+		<action name="RegistReport"  class="Reports.vendorRegstReport" method="RegReport">
+        <result name="success">/RegistReport.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action>
+     <action name="districtCasteAgeReport"  class="Reports.adminReport" method="districtCasteAgeReport">
+        <result name="success">/DistrictCasteWiseReport.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>  
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>   
+        </action>
+        <action name="alowiseCasteAgeReport"  class="Reports.adminReport" method="alowiseCasteAgeReport">
+        <result name="input">/DistrictCasteWiseReport.jsp</result>
+        <result name="success">/DistrictCasteWiseReport_alo.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action>
+     <action name="yearCasteAgeReport"  class="Reports.adminReport" method="yearCasteAgeReport">
+        <result name="success">/DistrictWiseYearReport.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>     
+        </action>
+      
+      <!-- =================== public reports by naveen after audit ======================= -->     
+        
+        <!-- registration status reports -->
+        <action name="RegReort" class="Reports.worker_reg_reports" method="RegReort">
+			<result name="inupt">Wr_reg_report.jsp</result>
+			<result name="success">Wr_reg_report.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action> 
+		
+		<action name="registrations_betweendates" class="Reports.worker_reg_reports" method="registrations_betweendates">
+			<result name="inupt">Wr_reg_report.jsp</result>
+			<result name="success">Wr_reg_report_betweendates.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="upto_current_RegReort" class="Reports.worker_reg_reports" method="upto_current_RegReort">
+			<result name="inupt">reg_report_betweendates.jsp</result>
+			<result name="success">reg_report_betweendates.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="fromdate_registrations" class="Reports.worker_reg_reports" method="fromdate_registrations">
+			<result name="success">Wr_reg_report.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+		<action name="aadharseed_Dist_alo_report" class="Reports.AadharSeed_Report" method="aadharseed_Dist_alo_report">
+			<result name="success">AadhaarSeeding_alo_result.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+		<action name="aadhar_seed_report"  class="Reports.AadharSeed_Report" method="Dist_alo_report">
+        <result name="success">/AadhaarSeeding_result.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action>
+        
+      <!-- renewal status reports -->  
+        
+        <action name="Renewal_report"  class="Reports.RenewalStatus" method="Renewal_report">
+           <result name="success">renewal_statusreport.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>  
+        </action> 
+        
+        <action name="ren_registrations_betweendates" class="Reports.RenewalStatus" method="ren_registrations_betweendates">
+			<result name="inupt">renewal_statusreport.jsp</result>
+			<result name="success">renewal_statusreport_betweendates.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ren_fromdate_registrations" class="Reports.RenewalStatus" method="ren_fromdate_registrations">
+			<result name="inupt">renewal_statusreport.jsp</result>
+			<result name="success">renewal_statusreport.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="alowise_renewals"  class="Reports.RenewalStatus" method="alowise_renewals">
+           <result name="inupt">renewal_statusreport.jsp</result>
+           <result name="success">alo_wise_renewals.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>  
+        </action> 
+        
+       <!-- aadhaar seeding through mobile and website  reports --> 
+       
+       <action name="aadhaar_seeding"  class="Reports.Aadhaar_seeding_report" method="aadhaar_seeding">
+           <result name="success">worker_aadhar_mobile.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>  
+        </action>
+        
+       <action name="mbl_aadhar_seed_alo_report"  class="Reports.Mobile_AadharSeed_Report" method="all_dist__mobile_aadharseed_report">
+        <result name="success">/District_Mobile_AadhaarSeeding_result.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action> 
+        
+        <action name="relation_mbl_aadhar_seed_report"  class="Reports.Mobile_AadharSeed_Report" method="reltn__mobile_aadharseed_report">
+        <result name="success">/Relation_Mobile_AadhaarSeeding_result.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action> 
+        
+        <action name="mandal_wise_registrations"  class="Reports.Mandalwise_registrations" method="mandal_wise_registrations">
+        <result name="success">/Mandalwise_registrations.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action> 
+        
+      <action name="mandalwise_regworkersdata"  class="Reports.Mandalwise_registrations" method="mandalwise_regworkersdata">
+        <result name="inupt">Mandalwise_registrations.jsp</result>
+        <result name="success">/mandal_wise_workersdetails.jsp</result>
+         <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>     
+        </action>  
+        
+        <action name="district_panchayat"  class="Reports.Panchayat_municiplities" method="district_panchayat">
+        <result name="success">/district_wise_pnchyt.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+      <action name="alowise_aadhaar_seededreport"  class="Reports.Aadhaarseeded_data_report" method="alowise_aadhaar_seededreport">
+        <result name="inupt">district_wise_aadhaar_report.jsp</result>
+        <result name="success">alowise_aadhaar_seedcount.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+        <action name="alowise_aadhaar_details"  class="Reports.Aadhaarseeded_data_report" method="alowise_aadhaar_details">
+        <result name="inupt">district_wise_aadhaar_report.jsp</result>
+        <result name="success">alowise_aadhaar_seeddetails.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+        <action name="get_apprd_regstn"  class="Reports.CBWorkers_Registrations_Status" method="get_apprd_regstn">
+        <result name="inupt">approve_reject_pending_cb_workers_report.jsp</result>
+        <result name="success">cb_workers_regstn_status_success.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+          
+         <action name="getDaily_report"  class="Reports.Daily_Reports" method="getDaily_report">
+        <result name="success">DailyAadhaar_seeded_report.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        <action name="alo_wisedailyreport"  class="Reports.Daily_Reports" method="alo_wisedailyreport">
+        <result name="input">DailyAadhaar_seeded_report.jsp</result>
+        <result name="success">AlowiseDailySeeded.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        <action name="Aadhaar_to_be_seeded"  class="Reports.Daily_Reports" method="Aadhaar_to_be_seeded">
+        <result name="success">Aadhar_tobe seeded.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+         <action name="Bank_to_be_seeded"  class="Reports.Daily_Reports" method="Bank_to_be_seeded">
+        <result name="success">Aadhar_tobe seeded.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+        <action name="BankReport" class="Reports.Daily_Reports" method="BankReport">
+        <result name="input">Bank_Master_Report.jsp</result>
+        <result name="success">bankreport.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+       
+         <action name="MandalCasteAgeReport"  class="Reports.adminReport" method="MandalCasteAgeReport">
+        <result name="success">/MandalCastewiseReport.jsp</result>
+           <result name="failure">error.jsp</result>
+            <result name="derror">error.jsp</result>  
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>   
+        </action>
+        
+        
+        <action name="fetchUnlinkedWorkers" class="nrgs.WorkerDetailsAction" method="fetchUnlinkedWorkers">
+    <result name="success">/unlinkedWorkers.jsp</result>
+    <result name="error">/error.jsp</result>
+</action>
+        
+        
+        
+      
+      </package>
+</struts>

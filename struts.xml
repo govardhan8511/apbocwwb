@@ -1,0 +1,1315 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.action.excludePattern" value="/CaptchaServlet,/PdfView" />
+	<constant name="struts.multipart.saveDir" value="/tmp" ></constant>
+	<package name="default" extends="struts-default">
+
+		<!-- =========== Registration Actions ======================= -->
+
+		<action name="getAadhar"
+			class="WorkerRegistration_NewAndEdit.WorkersRegistration" method="aadharFetch">
+			<result name="success">/Registration.jsp</result>
+			<result name="input">/Registration.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="aadharcheck" class="Registration.AadharCheck"
+			method="aadharCheck">
+			<result name="input">/Registration.jsp</result>
+			<result name="success">/aadharCheck.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="service_session">GPSession_Timeout.jsp</result>
+		</action>
+		<!-- ==========================Migrated checking======================= -->
+		<action name="migrated_check" class="Registration.AadharCheck"
+			method="migrated_check">
+			<result name="input">/Registration.jsp</result>
+			<result name="success">/aadharCheck.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="migrated_fmy_check" class="Registration.AadharCheck"
+			method="migrated_fmy_check">
+			<result name="input">/Registration.jsp</result>
+			<result name="success">/aadharCheck.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<!-- ====================================Migrated checking End=================== -->
+
+		<action name="famaadharcheck" class="Registration.AadharCheck"
+			method="famaadharCheck">
+			<result name="input">/Registration.jsp</result>
+			<result name="success">/aadharCheck.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="reg_basic" class="Registration.Reg_basic" method="Regis_basic">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">/Registration.jsp</result>
+			<result name="LoginSuccess">/Registration_login.jsp</result>
+			<result name="MigratedSuccess">/Registration_migrated.jsp</result>
+			<result name="GPSuccess">/Registration_login_GP.jsp</result>
+			<result name="fail">/error.jsp</result>
+			<result name="dublicate_uid">/dublicateAadhaar.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="reg_basic_update" class="Registration.Reg_basic"
+			method="Reg_basic_update">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">/Registration.jsp</result>
+			<result name="LoginSuccess">/Registration_login.jsp</result>
+			<result name="MigratedSuccess">/Registration_migrated.jsp</result>
+			<result name="GPSuccess">/Registration_login_GP.jsp</result>
+			<result name="fail">/error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="getrecept" class="Registration.PreviewRegistration"
+			method="getrecept">
+			<result name="input">/WorkerPreview.jsp</result>
+			<result name="success">/OnlineRegistrationReceipt.jsp</result>
+			<result name="LoginSuccess">/LoginRegistrationReceipt.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="addFamilyMember" class="Registration.FamilyMemberAdd"
+			method="addFamilyMember">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">familyreport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="updateFamilyMember" class="Registration.FamilyMemberAdd"
+			method="updateFamilyMember">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">familyreport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="deleteFamilyMember" class="Registration.FamilyMemberAdd"
+			method="deleteFamilyMember">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">familyreport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="getfmy_reg_details" class="Registration.FamilyMemberAdd"
+			method="getfmy_reg_details">
+			<result name="input">FamilyMemberModify.jsp</result>
+			<result name="success">FamilyMemberModReport.jsp</result>
+			<result name="error">FamilyMemberModify.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="fmy_add_alo" class="Registration.FamilyMemberAdd"
+			method="fmy_add_alo">
+			<result name="input">FamilyMemberModify.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">FamilyMemberModify.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="fmy_upd" class="Registration.FamilyMemberAdd"
+			method="fmy_upd">
+			<result name="input">FamilyMemberModify.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">FamilyMemberModify.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="fmy_delete" class="Registration.FamilyMemberAdd"
+			method="fmy_delete">
+			<result name="input">FamilyMemberModify.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">FamilyMemberModify.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="seed_aadhaar_check" class="TrainingMaster.AadhaarUpdate"
+			method="seed_aadhaar_check">
+			<result name="input">AadhaarSeedingForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">AadhaarSeedingForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="banck_details" class="Registration.Bank_details"
+			method="bankdetails">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success" type="redirect">/Preview.action</result> 
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="bank_update" class="Registration.Bank_update"
+			method="bank_update">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success" type="redirect">/Preview.action</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="Preview" class="Registration.PreviewRegistration"
+			method="Preview">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="success">/WorkerPreview.jsp</result>
+			<result name="LoginSuccess">/WorkerPreviewLogin.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<!-- =================== login actions =================== -->
+
+		<action name="loginaction" class="Login.LoginAction" method="loginaction">
+			<result name="input">/LoginPage.jsp</result>
+			<result name="success">/MainPage.jsp</result>
+			<result name="change_pwd">pwd_change.jsp</result>
+			<result name="fail">/LoginPage.jsp</result>
+		</action>		
+		<action name="LoginAuth" class="Login.LoginActionAuth" method="LoginAuth">
+			<result name="input">/LoginPageAuth.jsp</result>
+			<result name="success">/MainPage.jsp</result>
+			<result name="fail">/LoginPageAuth.jsp</result>
+		</action>
+		<!-- ==================== ALO Approval Page ================ -->
+
+		<action name="approveALOPage" class="cardgen.ALOApproveAction"
+			method="approveALOPage">
+			<result name="success">ApproveALOPage.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="aloReject" class="cardgen.ALOApproveEditAction"
+			method="alo_Reject">
+			<result name="input">ApproveALOPage.jsp</result>
+			<result name="success">Transfer_Reject_List_Success.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="aloRejectApprove" class="cardgen.ALOApproveEditAction"
+			method="aloRejectApprove">
+			<result name="input">RejectedList.jsp</result>
+			<result name="success">Transfer_Reject_List_Success.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="aloTransfer" class="cardgen.ALOApproveEditAction"
+			method="alo_Transfer">
+			<result name="input">ApproveALOPage.jsp</result>
+			<result name="success">Transfer_Reject_List_Success.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="aloTransfer_reg" class="cardgen.ALOApproveEditAction"
+			method="alo_Transfer">
+			<result name="input">LoginWiseReport.jsp</result>
+			<result name="success">Transfer_Reject_List_Success.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ALOApproveACC" class="cardgen.ALOAprroveViewAction"
+			method="ALOApproveACC">
+			<result name="success">PrintedWorkerRegistration.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ALOApproveEdit" class="cardgen.ALOApproveEditAction"
+			method="ALOApproveEdit">
+			<result name="input">ApproveALOPage.jsp</result>
+			<result name="success">ALOApproveEditForm.jsp</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="aprrove_alo_update" class="cardgen.ALOApproveEditAction"
+			method="aprrove_alo_update">
+			<result name="input">ApproveALOPage.jsp</result>
+			<result name="success" type="redirect">/approveALOPage.action
+			</result>
+			<result name="failure" type="redirect">/ALOApproveEdit.action</result>
+			<result name="dberror">databaseError.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="aloApproveSuccess" class="cardgen.ALOApproveAction"
+			method="aloApproveSuccess">
+			<result name="success">ALOApproveFormSuccess.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="runtime_error">RuntimeError.jsp</result>
+		</action>
+		<action name="checkpasswrd" class="cardgen.ALOApproveAction"
+			method="printPassword">
+			<result name="success">ApproveALOPage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="cardEntry" class="cardgen.ALOApproveAction"
+			method="entryList">
+			<result name="success">CardGenEntry.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="getIdData" class="cardgen.ALOApproveAction"
+			method="getIDData">
+			<result name="input">CardGenEntry.jsp</result>
+			<result name="success">IDCARDPDF_NEWII.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="QR" class="cardgen.ALOApproveAction" method="QRCode">
+			<result name="input">IDCARDPDF.jsp</result>
+		</action>
+
+		<action name="idcardGen" class="cardgen.ALOApproveAction"
+			method="vendorEntryList">
+			<result name="success">vendorCardGen.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="uploadSign" class="userManagement.UploadSignALO"
+			method="updateALOSign">
+			<result name="input">ViewAloSign.jsp</result>
+			<result name="success">ViewAloSign.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+
+		<action name="changeALOCircle" class="userManagement.ChangeAloCircle"
+			method="chngAloCircle">
+			<result name="success">AloCircleChange.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="change_circle" class="userManagement.ChangeAloCircle"
+			method="change_circle">
+			<result name="success">ChangeCircle.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+		</action>
+		<action name="dup_id_print" class="cardgen.Duplicate_IdGen"
+			method="dup_idgen">
+			<result name="input">duplicate_idcard.jsp</result>
+			<result name="success">duplicate_idcard_details.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="nodata">data_not_availabale.jsp</result>
+			<result name="noaadhar">aadhar_not_availabale.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="challanupdate" class="cardgen.Duplicate_IdGen"
+			method="challanUpdate">
+			<result name="input">duplicate_idcard.jsp</result>
+			<result name="success" type="redirect">/getIdData.action</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="aadhaar_error">pss_service_message.jsp</result>
+			<result name="dup_pay_process">PaymentGatewayRedirect.jsp</result>
+		</action>
+		<action name="OnlinePmtStatusUpd" class="payments.PaymentActions"
+			method="OnlinePaymentResp">
+			<result name="input">PaymentGatewayResponse.jsp</result>
+			<result name="success" type="redirect">/getIdData.action</result>
+<!-- 			<interceptor-ref name="token"></interceptor-ref> -->
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<result name="invalid.token">/invalid_token.jsp</result> -->
+			<result name="error">PaymentGatewayErrors.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<!-- =================== Admin Actions ======================= -->
+
+		<action name="user_regist" class="userManagement.NewUserRegistration"
+			method="newUserReg">
+			<result name="input">NewUserRegister.jsp</result>
+			<result name="success">newUserDetails.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+
+
+		<action name="updatedob" class="userManagement.UpdateDob"
+			method="updatedob">
+			<result name="input">DOBUpdateForm.jsp</result>
+			<result name="success">DOBUpdateForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="PwdReset" class="userManagement.UserPwdActions"
+			method="PwdReset">
+			<result name="input">PasswordReset.jsp</result>
+			<result name="success">PasswordReset.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="PwdChange" class="userManagement.UserPwdActions"
+			method="PwdChange">
+			<result name="input">ChangePwd.jsp</result>
+			<result name="success">ChangePwd.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="new_pwd_success">pwd_change.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="changeIncharge" class="userManagement.InchargeDao"
+			method="changeIncharge">
+			<result name="input">ChangeAloIncharge.jsp</result>
+			<result name="success">ChangeAloIncharge.jsp</result>
+			<result name="fail">ChangeAloIncharge.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="getcircles" class="userManagement.InchargeDao"
+			method="getcircles">
+			<result name="input">InchargeAddForm.jsp</result>
+			<result name="success">InchargeCircles.jsp</result>
+			<result name="fail">InchargeAddForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="Add_Incharge" class="userManagement.InchargeDao"
+			method="Add_Incharge">
+			<result name="input">InchargeAddForm.jsp</result>
+			<result name="success">InchargeCircles.jsp</result>
+			<result name="fail">InchargeAddForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="getunionreport" class="userManagement.AdminActions"
+			method="getunionreport">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">UnionReport.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="union_check" class="userManagement.AdminActions"
+			method="union_check">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="union_insert" class="userManagement.AdminActions"
+			method="union_insert">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="union_upd" class="userManagement.AdminActions"
+			method="union_upd">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="union_delete" class="userManagement.AdminActions"
+			method="union_delete">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="ifsc_check" class="userManagement.AdminActions"
+			method="ifsc_check">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ifsc_insert" class="userManagement.AdminActions"
+			method="ifsc_insert">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ifsc_upd" class="userManagement.AdminActions"
+			method="ifsc_upd">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ifsc_delete" class="userManagement.AdminActions"
+			method="ifsc_delete">
+			<result name="input">UnionEntryForm.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">UnionEntryForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="RolesMenuReport" class="userManagement.AdminActionsDirct"
+			method="RolesMenuReport">
+			<result name="input">RolesMenuReport.jsp</result>
+			<result name="success">RolesMenuReport.jsp</result>
+			<result name="successedit">RolesMenuEdit.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="RolesMenuInsert" class="userManagement.AdminActions"
+			method="RolesMenuInsert">
+			<result name="input">RolesMenuEdit.jsp</result>
+			<result name="success">RolesMenuEdit.jsp</result>
+			<result name="fail">RolesMenuEdit.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trade_check" class="userManagement.AdminActions"
+			method="trade_check">
+			<result name="input">TradeChange.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">TradeChange.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="reg_cancle" class="userManagement.Reg_Cancle"
+			method="reg_cancle">
+			<result name="input">/Reg_Cancle.jsp</result>
+			<result name="success">/Reg_Cancle_success.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+		</action>
+		<action name="retired_wrs_upd" class="userManagement.Reg_Cancle"
+			method="retired_wrs_upd">
+			<result name="input">/Reg_Cancle.jsp</result>
+			<result name="success">/Reg_Cancle_success.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+		</action>
+		<action name="print_pintpermision" class="userManagement.Reg_Cancle"
+			method="print_pintpermision">
+			<result name="input">/RegIdPrintPermission.jsp</result>
+			<result name="success">/RegIdPrintPermission.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+		</action>
+		<!-- ===================NEW Renewal Actions ======================= -->
+		
+
+		
+
+		
+		<action name="challan_check" class="renewal.Challan_modifications"
+			method="challan_check">
+			<result name="input">worker_renewals.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">worker_renewals.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+<action name="RenewalWorker_chk" class="renewal.RenewalActions" method="RenewalWorker_chk">
+			<result name="input">RenewalWorker.jsp</result>
+			<result name="success">RenewalWorkerDetails.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+<action name="Renewal_submit" class="renewal.RenewalActions"
+			method="Renewal_submit">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token">/invalid_token.jsp</result>
+			<result name="input">RenewalWorker.jsp</result>
+			<result name="success">RenewalWorkerSuccess.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="sesion_exp">Session_Timeout.jsp</result>
+		</action>
+<action name="challan_edit_submit" class="renewal.RenewalActions"
+			method="challan_edit_submit">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token">/invalid_token.jsp</result>
+			<result name="input">challan_details_modification.jsp</result>
+			<result name="success">RenewalWorkerSuccess.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="sesion_exp">Session_Timeout.jsp</result>
+		</action>
+		<action name="param_check" class="userManagement.AdminActions"
+			method="param_check">
+			<result name="input">Param_Master.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="failure">seed_aadhaar_check.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+
+		<action name="param_insert" class="userManagement.AdminActions"
+			method="param_insert">
+			<result name="input">Param_Master.jsp</result>
+			<result name="success">Param_Master.jsp</result>
+			<result name="failure">Param_Master.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="param_update" class="userManagement.AdminActions"
+			method="param_update">
+			<result name="input">Param_Master.jsp</result>
+			<result name="success">Param_Master.jsp</result>
+			<result name="failure">Param_Master.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="facilitate_check" class="userManagement.AdminActions"
+			method="facilitate_check">
+			<result name="input">Facilitator_registration.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">seed_aadhaar_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="facilitate_insert" class="userManagement.AdminActions"
+			method="facilitate_insert">
+			<result name="input">Facilitator_registration.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">Facilitator_registration.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="facilitateSelect" class="userManagement.AdminActions"
+			method="facilitateSelect">
+			<result name="input">Facilitator_registration.jsp</result>
+			<result name="success">FacilitatorReport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="facilitator_update" class="userManagement.AdminActions"
+			method="facilitator_update">
+			<result name="input">Facilitator_registration.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">Facilitator_registration.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="facilitate_delete" class="userManagement.AdminActions"
+			method="facilitate_delete">
+			<result name="input">Facilitator_registration.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">seed_aadhaar_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<!-- =========================Reports ============================= -->
+		<action name="searchreport" class="Reports.Reports_search"
+			method="searchreport">
+			<result name="input">/search_report.jsp</result>
+			<result name="success">search_report.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="vendor_regstn_status" class="Reports.Registration_status"
+			method="regstn_status">
+			<result name="success">vendor_regstn_status_report.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="alo_wise_vendor_regstn_details" class="Reports.vendor_regstn_details"
+			method="alo_wise_vendor_regstn_details">
+			<result name="inupt">vendor_regstn_status_report.jsp</result>
+			<result name="success">vendor_regstn_status_report_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="Vendor_Search_report" class="Reports.Reports_search"
+			method="searchreport">
+			<result name="input">/search_report.jsp</result>
+			<result name="abcd">search_report_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="vendor_regstn_status" class="Reports.Registration_status"
+			method="regstn_status">
+			<result name="input">/search_report.jsp</result>
+			<result name="success">vendor_regstn_status_report.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+		<action name="aadhar_reg_ackg_no_search" class="Reports.Aadhar_Reg_Ackg_search"
+			method="number_search">
+			<result name="input">/aadrno_regno_ackgno_search.jsp</result>
+			<result name="success">aadrno_regno_ackgno_search_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+		<action name="aadhar_no_search" class="Reports.Aadhar_Reg_Ackg_search"
+			method="aadhaar_search">
+			<result name="input">/aadrno_regno_ackgno_search_result.jsp</result>
+			<result name="success">aadrno_search_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="role_wise_user_report" class="Reports.RoleWise_UserReport"
+			method="user_report">
+			<result name="success">RoleWise_UserReport_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="role_wise_alo_details" class="Reports.RoleWise_UserReport"
+			method="alo_details">
+			<result name="success">role_wise_user_report_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="approval_status_report" class="Reports.Approval_status"
+			method="aprvl_status">
+			<result name="success">approval_status_result.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+		<!-- ============= AD AGENCY ACTIOND========================= -->
+		<action name="ad_agency_check" class="userManagement.AdminActions"
+			method="ad_agency_check">
+			<result name="input">Advt_Agency_Registration.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">seed_aadhaar_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ad_agency_insert" class="userManagement.AdminActions"
+			method="ad_agency_insert">
+			<result name="input">Advt_Agency_Registration.jsp</result>
+			<result name="success">Advt_Agency_Registration.jsp</result>
+			<result name="failure">Advt_Agency_Registration.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ad_work_order_insert" class="userManagement.AdminActions"
+			method="ad_work_order_insert">
+			<result name="input">Advt_WorkOrder_Entry.jsp</result>
+			<result name="success">Advt_WorkOrder_Entry.jsp</result>
+			<result name="failure">Advt_WorkOrder_Entry.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="bank_details_fetch" class="userManagement.EditActions"
+			method="bankdetailsedit">
+			<result name="input">bankdetails_edit.jsp</result>
+			<result name="success">bankdetails_edit.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+
+		<action name="bank_details_update"
+			class="userManagement.EditActions" method="bank_details_update">
+			<result name="input">bankdetails_edit.jsp</result>
+			<result name="success">bankdetails_edit.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="bank_details_insert"
+			class="userManagement.EditActions" method="bank_details_insert">
+			<result name="input">bankdetails_edit.jsp</result>
+			<result name="success">bankdetails_edit.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="User_update" class="userManagement.AdminActions"
+			method="User_update">
+			<result name="input">User_Update.jsp</result>
+			<result name="success">User_Update.jsp</result>
+			<result name="failure">User_Update.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<!-- ============= 04-042018 ========================= -->
+		<action name="address_details_check" class="userManagement.AddressEdit"
+			method="address_check">
+			<result name="input">address_details_update.jsp</result>
+			<result name="success">/address_details_update.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="photo_edit_regno_check" class="userManagement.PhotoEdit"
+			method="regno_check">
+			<result name="input">worker_photo_edit.jsp</result>
+			<result name="success">/worker_photo_edit.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+
+		<action name="nominee_regno_check" class="userManagement.NomineedeailsEdit"
+			method="get_nominee_details">
+			<result name="input">nominee_details_edit.jsp</result>
+			<result name="success">/nominee_details_edit_report.jsp</result>
+			<result name="error">nominee_details_edit.jsp</result>
+		</action>
+
+		<action name="photo_update_action" class="userManagement.PhotoEdit"
+			method="photo_update">
+			<result name="input">worker_photo_edit.jsp</result>
+			<result name="success">/update_successfully.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="address_detailscheck" class="userManagement.AddressEdit"
+			method="addresscheck">
+			<result name="input">address_details_update.jsp</result>
+			<result name="success">/address_details_update.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+
+		<action name="address_details_update" class="userManagement.AddressEdit"
+			method="address_details_update">
+			<result name="input">address_details_update.jsp</result>
+			<result name="success">update_successfully.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		
+		<action name="nominee_regno_check" class="userManagement.NomineedeailsEdit"
+			method="get_nominee_details">
+			<result name="input">nominee_details_edit.jsp</result>
+			<result name="success">/nominee_details_edit_report.jsp</result>
+			<result name="error">nominee_details_edit.jsp</result>
+		</action>
+
+		<action name="nominee_fmy_delete" class="userManagement.NomineedeailsEdit"
+			method="nominee_fmy_delete">
+			<result name="input">nominee_details_edit.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">nominee_details_edit.jsp</result>
+		</action>
+
+		<action name="nomiee_fmy_upd" class="userManagement.NomineedeailsEdit"
+			method="nomiee_fmy_upd">
+			<result name="input">nominee_details_edit.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">nominee_details_edit.jsp</result>
+		</action>
+
+		<action name="nominee_fmy_add_alo" class="userManagement.NomineedeailsEdit"
+			method="nominee_fmy_add_alo">
+			<result name="input">nominee_details_edit.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">nominee_details_edit.jsp</result>
+		</action>
+
+
+		<!-- start challn reports actions -->
+
+		<action name="get_worker_recipt_details" class="Reports.worker_details"
+			method="get_worker_recipt_details">
+			<result name="success">receiptdetails_modification.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="update_worker_recipt_details" class="Reports.worker_details"
+			method="update_worker_recipt_details">
+			<result name="success">receiptdetails_modification.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+
+		<action name="get_worker_approve_details" class="Reports.worker_details"
+			method="get_worker_approve_details">
+			<result name="success">approve_reject_worker_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="update_worker_approve_details" class="Reports.worker_details"
+			method="update_worker_approve_details">
+			<result name="success">challanModReport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+
+		<!-- ======================Trade Occupation Master===================== -->
+		<action name="occupation_check" class="userManagement.AdminActions"
+			method="occupation_check">
+			<result name="input">occupationMaster.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="fail">seed_aadhaar_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trademaster_check" class="userManagement.AdminActions"
+			method="trademaster_check">
+			<result name="input">occupationMaster.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="fail">seed_aadhaar_check.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="occupation_insert" class="userManagement.AdminActions"
+			method="occupation_insert">
+			<result name="input">occupationMaster.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="failure">occupationMaster.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+
+		<action name="getoccupationreport" class="userManagement.AdminActions"
+			method="getoccupationreport">
+			<result name="input">occupationMaster.jsp</result>
+			<result name="success">occupationReport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="occupation_upd" class="userManagement.AdminActions"
+			method="occupation_upd">
+			<result name="input">occupationMaster.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="failure">occupationMaster.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="work_order_mfy" class="userManagement.AdminActions"
+			method="work_order_mfy">
+			<result name="input">AdvtWorkOrderModify.jsp</result>
+			<result name="success">AdvtWorkOrderReport.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<!-- ================================Occupation Master End==================== -->
+		<!-- ======================Testing ================================ -->
+		<action name="GenerateId" class="cardgen.IDcard_new" method="GenerateId">
+			<result name="input">CardGenEntry_test.jsp</result>
+			<result name="success">IDCARDPDF_NEWII.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+			<action name="test_aadhaar" class="DBC.Test"
+			 method="test_aadhaar">
+			<result name="failure">error.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+		<!-- ======================while auditing by naveen ================================ -->
+
+	
+
+		
+
+		<!-- <action name="reports_dates_check" class="renewal.Values_Checking" 
+			method="reports_dates_check"> <result name="input">AadhaarSeedTot.jsp</result> 
+			<result name="success">AadhaarSeedTot.jsp</result> <result name="error">InvalidData.jsp</result> 
+			</action> -->
+
+		<action name="renewal_reports_dates_check" class="renewal.Values_Checking"
+			method="renewal_reports_dates_check">
+			<result name="input">renewal_statusreport.jsp</result>
+			<result name="success">renewal_statusreport.jsp</result>
+			<result name="error">InvalidData.jsp</result>
+		</action>
+
+
+		<action name="migrated_checking" class="" method="migrated_checking">
+			<result name="input">Registration_migrated.jsp</result>
+			<result name="success">Registration_migrated.jsp</result>
+
+		</action>
+
+
+		<!-- <action name="worker_registration_report" class="Reports.Worker_registration" 
+			method="worker_registration_report"> <result name="success">AadhaarSeedTot.jsp</result> 
+			<result name="error">InvalidData.jsp</result> </action> -->
+
+		<!-- ==========================Testing End============================== -->
+		<!-- =========================legacy registration on 13-12-2018============================= -->
+
+
+		<action name="old_regno_check" class="Legacy_registrations.Legacy_User_Registration"
+			method="old_regno_check">
+			<result name="input">legacy_worker_registration.jsp</result>
+			<result name="success">legacy_worker_registration_checking.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+
+		<action name="legacy_challandetails" class="Legacy_registrations.Legacy_User_Registration"
+			method="legacy_challandetails">
+			<result name="input">legacy_worker_registration.jsp</result>
+			<result name="success">legacy_worker_registration.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token">/invalid_token.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="sesion_exp">Session_Timeout.jsp</result>
+		</action>
+
+		<action name="legacy_regstn_submit" class="Legacy_registrations.Legacy_User_Registration"
+			method="legacy_regstn_submit">
+			<result name="input">legacy_worker_registration.jsp</result>
+			<result name="success">legacy_worker_registration_success.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token">/invalid_token.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="sesion_exp">Session_Timeout.jsp</result>
+		</action>
+
+		<action name="pending_legacy_registrations" class="Legacy_registrations.Legacy_User_Registration"
+			method="pending_legacy_registrations">
+			<result name="input">legacy_worker_registration.jsp</result>
+			<result name="success">pending_legacy_workers.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+<action name="GetVlidUpto"	class="Legacy_registrations.Legacy_User_Registration" method="GetVlidUpto">
+			<result name="success">/legacy_worker_registration.jsp</result>
+			<result name="input">/legacy_worker_registration.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+<!-- 		=============================End Legacy registration============================= -->
+
+
+		<action name="AddressMasterIns" class="userManagement.AddressMaster"
+			method="AddressMasterIns">
+			<result name="input">AddressMaster.jsp</result>
+			<result name="success">AddressMaster.jsp</result>
+			<result name="fail">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+
+		<!-- =========================C.B registrations approve reject by naveen 
+			on 14-03-2019============================= -->
+
+
+		<action name="chandrannabhima_report" class="Reports.ChandrannaBhimaReport"
+			method="chandranna_bhima_report">
+			<result name="success">chandranna_bhima_report.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="benificary_list_approval" class="Reports.ChandrannaBhimaReport"
+			method="benificary_list_approval">
+			<result name="input">chandranna_bhima_report.jsp</result>
+			<result name="success">chandranna_bhima_report_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="approve_reject_cbworkers" class="Reports.ChandrannaBhimaReport"
+			method="approve_reject_cbworkers">
+			<result name="success">chandranna_bhima_report.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="admin_approve" class="Reports.ChandrannaBhimaReport"
+			method="admin_approve">
+			<result name="input">chandranna_bhima_report.jsp</result>
+			<result name="success">chandranna_bhima_report_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="admin_reject" class="Reports.ChandrannaBhimaReport"
+			method="admin_reject">
+			<result name="input">chandranna_bhima_report.jsp</result>
+			<result name="success">chandranna_bhima_report_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+		</action>
+
+		<action name="GetValidRegDetails" class="Registration.RegDetails"
+			method="GetValidRegDetails">
+			<result name="input">Reg_Cancle.jsp</result>
+			<result name="success">AadhaarRegDetails.jsp</result>
+			<result name="error">AadhaarSeedingForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="GPTokenMerchentCon" class="servicesMethods.JwtActions"
+			method="GenerateToken">
+			<result name="success">Registration_login.jsp</result>
+			<result name="error">AadhaarSeedingForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="GPEstablishMerhCon" class="servicesMethods.JwtActions"
+			method="EstablishCon">
+			<result name="Reg_page">Registration_login_GP.jsp</result>
+			<result name="DupIdCardGen">Registration_login_GP.jsp</result>
+			<result name="error">AadhaarSeedingForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		 <action name="getContactdetails" class="userManagement.contact_action"
+       method="getContactdetails">
+       <result name="success">contact_details.jsp</result>
+       <result name="failure">contact_details.jsp</result>
+       </action>
+       
+        <action name="contact_modify" class="userManagement.contact_action"
+			method="contact_modify">
+			<result name="success" type="chain">/getContactdetails</result>
+			<result name="failure">contact_details.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+<!-- <action name="OnlinePaymentProcess"  class="payments.PaymentActions" method="OnlinePaymentProcess"> -->
+<!--   <result name="input">cess_payment.jsp</result> -->
+<!--   <result name="success">trxn_response.jsp</result> -->
+<!--   <result name="failure">/error.jsp</result> -->
+<!--   </action> -->
+      
+<!--        <action name="payment_status_update"  class="cesspayment.Payment_Status" method="status_update"> -->
+<!--   <result name="input">payment_response.jsp</result> -->
+<!--   <result name="success">payment_response_receipt.jsp</result> -->
+<!--   <result name="failure">/error.jsp</result> -->
+<!--   </action> -->
+<action name="bank_details_aadhaar_fetch" class="userManagement.EditActions"
+			method="bankdetails_aadhaar_edit">
+			<result name="input">AadhaarSeeding.jsp</result>
+			<result name="success">AadhaarSeeding.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="bank_details_aadhaar_update" class="userManagement.EditActions"
+			method="bank_details_aadhaar_update">
+			<result name="input">AadhaarSeeding.jsp</result>
+			<result name="success">AadhaarSeeding.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="bank_details_aadhaar_insert" class="userManagement.EditActions"
+			method="bank_details_aadhaar_insert">
+			<result name="input">AadhaarSeeding.jsp</result>
+			<result name="success">AadhaarSeeding.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="getbank_reg_details" class="Registration.FamilyMemberAdd"
+			method="getbank_reg_details">
+			<result name="success">bankdetails.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+<action name="mobile_aadhaar_update" class="userManagement.EditActions"
+			method="mobile_aadhaar_update">
+			<result name="input">AadhaarSeeding.jsp</result>
+			<result name="success">Aadhaar_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		
+		<action name="account_check" class="userManagement.EditActions"
+			method="account_check">
+			<result name="input">AadhaarSeeding.jsp</result>
+			<result name="success">Aadhaar_success.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		
+			<action name="online_banck_details" class="Registration.Bank_details"
+			method="online_banck_details">
+			<result name="input">/Registration_login.jsp</result>
+			<result name="challan_details_process" type="redirect">/getrecept</result>
+			<result name="success" type="redirect">/Preview.action</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="reg_pay_process">RegistrationPaymentRedirection.jsp</result>
+		</action>
+		
+		<action name="onlineRegistrationStatusUpd" class="payments.PaymentActions"
+			method="onlineRegistrationStatusUpd">
+			<result name="input">RegistrationPaymentGatewayResponse.jsp</result>
+			<result name="success">payment_response_receipt.jsp</result>
+<!-- 			<interceptor-ref name="token"></interceptor-ref> -->
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<result name="invalid.token">/invalid_token.jsp</result> -->
+			<result name="error">payment_response_receipt.jsp</result>
+			<result name="failure">PaymentGatewayErrors.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+			<action name="online_renewal_details" class="renewal.RenewalActions"
+			method="online_renewal_details">
+			<result name="input">/RenewalWorker.jsp</result>
+			<result name="success">/RenewalWorker.jsp</result>
+			<result name="failure">/error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="reg_pay_process">RenewalPaymentRedirection.jsp</result>
+		</action>
+		
+		<action name="onlineRenewalStatusUpd" class="payments.PaymentActions"
+			method="onlineRenewalStatusUpd">
+			<result name="input">RenewalPaymentGatewayResponse.jsp</result>
+			<result name="success">RenewalWorkerSuccess.jsp</result>
+<!-- 			<interceptor-ref name="token"></interceptor-ref> -->
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<result name="invalid.token">/invalid_token.jsp</result> -->
+			<result name="error">PaymentGatewayErrors.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="sesion_exp">Session_Timeout.jsp</result>
+		</action>
+		
+		
+		<action name="user_creation" class="cesspayment.CessAdminAction"
+			method="user_creation">
+			<result name="input">/CessUserCreation.jsp</result>
+			<result name="success">/CessUserCreation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="failure">error.jsp</result>
+		</action>
+		
+		<action name="check_user" class="cesspayment.CessAdminAction"
+			method="check_user">
+			<result name="input">/CessUserCreation.jsp</result>
+			<result name="success">/CessUserCreation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="failure">CessUserCreation.jsp</result>
+		</action>
+		
+		<action name="cess_details_submit"  class="cesspayment.CessAdminAction" method="first_cess">
+            <result name="input">CessLegacyPayment.jsp</result>  
+            <result name="success">payment_response_receipt.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="getAlo_name"  class="cesspayment.CessAdminAction" method="getAlo_name">
+            <result name="input">CessLegacyPayment.jsp</result>  
+            <result name="success">CessLegacyPayment.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="checkapproval_no"  class="cesspayment.CessAdminAction" method="checkapproval_no">
+            <result name="input">CessLegacyPayment.jsp</result>  
+            <result name="success">CessLegacyPayment.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="checkreg_no"  class="cesspayment.CessAdminAction" method="checkreg_no">
+            <result name="input">CessLegacyPayment.jsp</result>  
+            <result name="success">CessLegacyPayment.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="multiple_insert"  class="DBC.Test" method="multiple_insert">
+            <result name="input">multiplevalues.jsp</result>  
+            <result name="success">multiplevalues.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+      </action>
+      
+      <action name="sdp_submit"  class="SdpManagement.SdpAction" method="sdp_submit">
+            <result name="input">ITI_select.jsp</result>  
+            <result name="success">multiplevalues.jsp</result>
+            <result name="failure">/error.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="service_session">GPSession_Timeout.jsp</result>
+      </action>
+      
+     <action name="getpssValues" class="Testing.PssTest"
+		method="getpssValues">
+		<result name="success">apbocwwbhome.jsp</result>
+		<result name="error">error.jsp</result>
+		
+		</action>
+        
+	</package>
+
+	<!-- ================== Configuration of external XML files. ================ -->
+	<include file="skilltraining.xml" />
+	<include file="claims.xml" />
+	<include file="reports.xml" />
+</struts>

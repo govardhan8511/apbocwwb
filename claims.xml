@@ -1,0 +1,289 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<package name="claims" extends="struts-default">
+
+		<!-- =========== CLAIM ENTRY ACTIONS ============================ -->
+		<!-- ============================================================ -->
+
+		<action name="claimfmyaadhaarcheck" class="claims.ClaimsAadharDetails"
+			method="claimfmyaadhaarcheck">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">ClaimsFormLogin.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="getamountdetails" class="claims.FormDataRetrive"
+			method="getamountdetails">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">Claims_public_amount_form.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="getclaimsdetails" class="claims.FormDataRetrive"
+			method="getclaimsdetails">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">Claims_public_claims_form.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="getuploadsdetails" class="claims.FormDataRetrive"
+			method="getuploadsdetails">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">Claims_public_upload_form.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="claimsamount" class="claims.FormDataRetrive"
+			method="claimsamount">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ClaimDetailsCheck" class="claims.ClaimsAadharDetails"
+			method="ClaimDetailsCheck">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">ClaimsFormLogin.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ClaimApplyChecklist" class="claims.ClaimsAadharDetails"
+			method="ClaimApplyChecklist">
+			<result name="input">ClaimsCheck.jsp</result>
+			<result name="success">ClaimsCheckListDetails.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ClaimBenfitCheck" class="claims.ClaimsAadharDetails"
+			method="ClaimBenfitCheck">
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">ClaimsFormLogin.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="previewclaim" class="claims.ClaimsActions"
+			method="previewClaims">
+<!-- 			<interceptor-ref name="token"></interceptor-ref> -->
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<result name="invalid.token">/invalid_token.jsp</result> -->
+			<result name="input">ClaimsFormLogin.jsp</result>
+			<result name="success">ClaimsPreview.jsp</result>
+			<result name="exeption">ExceptionPage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="claimAcknowledge" class="claims.ClaimsActions"
+			method="claimAcknowledge">
+			<result name="input">ClaimsPreview.jsp</result>
+			<result name="success">ClaimAcknowledge.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+		<!-- =========== ALO VERIFY ACTIONS ============================ -->
+		<!-- ============================================================ -->
+
+		<action name="ClaimVerification" class="claims.VerifyClaims"
+			method="ClaimVerification">
+			<result name="success">ClaimsVerify.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="viewClaim" class="claims.ViewClaims" method="viewClaim">
+			<result name="success">ClaimsVerifyView.jsp</result>
+			<result name="editview">ClaimsVerifyEdit.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="editClaim" class="claims.ViewClaims" method="editClaim">
+			<result name="success">ClaimsVerifyEdit.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ApproveClaims" class="claims.VerifyClaims"
+			method="ApproveClaims">
+			<result name="success">ClaimsApproveSuccess.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="RejectClaim" class="claims.VerifyClaims"
+			method="RejectClaim">
+			<result name="success">ClaimsApproveSuccess.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+		<!-- =========== DCL VERIFY ACTIONS ============================ -->
+		<!-- ============================================================ -->
+
+		
+<action name="ProceedingGeneration" class="claims.VerifyClaims"
+			method="ProceedingGeneration">
+			<result name="success">dcl_proceeding_gen.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+<action name="generate_proceeding" class="claims.VerifyClaims" method="generate_proceeding">
+<result name="input">dcl_proceeding_gen.jsp</result>
+            <result name="success">proceeding_success.jsp</result>
+            <result name="error">ClaimsFailurePage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+<action name="gen_textfile" class="claims.text_file_generation" method="filegen">
+            <result name="success">textfile_gen.jsp</result>
+            <result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+
+<action name="list_in_proceedingno" class="claims.VerifyClaims" method="list_in_proceedingno">
+			<result name="success">list_in_proceeding.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+<action name="TextFile_Generation" class="claims.textfile_generation" method="text_filegeneration">
+            <result name="success">txtfileProcsuccess.jsp</result>
+            <result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+		<!-- ===========================PaymentGate way ========================= -->
+		<action name="FileTramsferToBankBoc" class="claims.TransferToBankBOC"
+			method="FileTramsferToBankBoc">
+			<result name="success">ResponsePaymentGate.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+		<!-- secretary actions -->
+
+		<action name="approve_claim" class="claims.VerifyClaims"
+			method="approve_claim">
+			<result name="success">ClaimsApprove.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+		<action name="sendtobank" class="claims.VerifyClaims" method="sendtobank">
+			<result name="success">claimsProcsuccess.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+
+
+		<!-- ===================================================================== -->
+
+		<!-- ===========================Legacy Actions======================================= -->
+		<action name="ClaimLegacyInsert" class="claims.ClaimsActions"
+			method="ClaimLegacyInsert">
+			<result name="input">ClaimsLegacyForm.jsp</result>
+			<result name="success">ClaimAcknowledge.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+
+		<!-- ===================================Legacy Actions END==================================== -->
+		<!-- ================= CLAIMS REPORTS =========================== -->
+		<!-- ============================================================= -->
+<action name="uidenc" class="claims.ClaimsReportsActions"
+			method="getuidupd">
+			<result name="success">test.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ClaimsDashBoard" class="claims.ClaimsReportsActions"
+			method="ClaimsDashBoard">
+			<result name="input">ClaimsReportInterface.jsp</result>
+			<result name="success">ClaimsDashboard.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="ClaimSearchReport" class="claims.ClaimsReportsActions"
+			method="ClaimSearchReport">
+			<result name="input">ClaimSearch.jsp</result>
+			<result name="success">ClaimSearchDetails.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		
+		<action name="text_file_generation" class="claims.File_generation_text" method="text_file_generation">
+            <result name="success">txtfileProcsuccess.jsp</result>
+            <result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+    <action name="ABPStext_file_generation" class="claims.APBSInputFile" method="ABPStext_file_generation">
+            <result name="success">home.jsp</result>
+            <result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+    
+    <action name="getOtp" class="claims.OtpTest" method="getOtp">
+            <result name="success">home.jsp</result>
+            <result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+    </action>
+		
+	</package>
+</struts>

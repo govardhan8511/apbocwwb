@@ -1,0 +1,448 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" ></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+
+	<package name="TrainingMaster" extends="struts-default">
+		<action name="updateaadhaar" class="TrainingMaster.AadhaarUpdate"
+			method="updateaadhaar">
+			<result name="input">TrainingProposedForWorkers.jsp</result>
+			<result name="success">skillaadhaarupdate.jsp</result>
+			<result name="fail">TrainingProposedForWorkers.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trainingInsert" class="TrainingMaster.TrainingMasterAction"
+			method="trainingInsertMaster">
+			<result name="input">TrainingMaster.jsp</result>
+			<result name="success">TrainingMaster.jsp</result>
+			<result name="error">TrainingMaster.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+		</action>
+		<action name="trainingMasterUp" class="TrainingMaster.TrainingMasterAction"
+			method="trainingUpdateMaster">
+			<result name="input">TrainingMaster.jsp</result>
+			<result name="success">TrainingMaster.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trainingMasterDel" class="TrainingMaster.TrainingMasterAction"
+			method="trainingDeleteMaster">
+			<result name="success">TrainingMaster.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="trainingBatchInsert" class="TrainingMaster.TrainingMasterAction"
+			method="trainingBatchInsert">
+			<result name="input">TrainingBatchForm.jsp</result>
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="error">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trainingBatchEdit" class="TrainingMaster.TrainingMasterAction"
+			method="trainingBatchEdit">
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trainingBatchUpdate" class="TrainingMaster.TrainingMasterAction"
+			method="trainingBatchUpdate">
+			<result name="input">TrainingBatchForm.jsp</result>
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="trainingBatchDelete" class="TrainingMaster.TrainingMasterAction"
+			method="trainingBatchDelete">
+			<result name="input">TrainingBatchForm.jsp</result>
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="SearchMainList" class="TrainingMaster.TrainingMasterAction"
+			method="SearchMainList">
+			<result name="input">TrainingProposedForWorkers.jsp</result>
+			<result name="success">TrainingProWorList.jsp</result>
+			<result name="dberror">SkillErrorPage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="shortList" class="TrainingMaster.TrainingMasterAction"
+			method="shortList">
+			<result name="input">TrainingProposedForWorkers.jsp</result>
+			<result name="success">TPSuccess.jsp</result>
+			<result name="error">ExceptionPage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ACLApprovaReport" class="TrainingMaster.TrainingMasterAction"
+			method="aclSelectData">
+			<result name="success">ACLApprovaReport.jsp</result>
+			<result name="input">ACLApprovePage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="approve" class="TrainingMaster.TrainingMasterAction"
+			method="aclApproveData">
+			<result name="success">TPSuccess.jsp</result>
+			<result name="input">ACLApprovePage.jsp</result>
+			<result name="error">ACLApprovePage.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="getBatchTraining" class="TrainingMaster.TrainingMasterAction"
+			method="getBatchTraining">
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="input">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="traininglocationadd" class="stp.SKLTRNGAction"
+			method="add">
+			<result name="success">TrainingLocation.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="getreg_details" class="TrainingMaster.AadhaarUpdate"
+			method="getreg_details">
+			<result name="input">AadhaarSeedingForm.jsp</result>
+			<result name="success">AadhaarRegDetails.jsp</result>
+			<result name="error">AadhaarSeedingForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="traininglocationcheck" class="stp.SKLTRNGAction"
+			method="traininglocationcheck">
+			<result name="success">seed_aadhaar_check.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="traininglocationdelete" class="stp.SKLTRNGAction"
+			method="delete">
+			<result name="success">TrainingLocation.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="traininglocationedit" class="stp.SKLTRNGAction"
+			method="update">
+			<result name="success">TrainingLocation.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="trainingreport" class="stp.SKLTRNGAction" method="list1">
+			<result name="success">TrainingLocationReport.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="traininglocationdelete" class="stp.SKLTRNGAction"
+			method="delete">
+			<result name="success">TrainingLocation.jsp</result>
+			<result name="input">TrainingLocation.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<!-- reports -->
+		<action name="toolkitReport" class="skilltrainingReports.ToolkitReportAction"
+			method="toolkitReport">
+			<result name="input">ToolkitReport.jsp</result>
+			<result name="success">ToolkitReport.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="toolkitworkrs" class="skilltrainingReports.ToolkitReportAction"
+			method="toolkitworkrs">
+			<result name="input">ToolkitReport.jsp</result>
+			<result name="success">ToolkitReportWorkers.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="loginwisereport" class="skilltrainingReports.ToolkitReportAction"
+			method="loginwisereport">
+			<result name="input">ToolkitReport.jsp</result>
+			<result name="success">LoginWiseReport.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="transfer_report" class="skilltrainingReports.ToolkitReportAction"
+			method="transfer_report">
+			<result name="success">LoginWiseReport.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="logindistalo" class="skilltrainingReports.ToolkitReportAction"
+			method="logindistalo">
+			<result name="success">LoginDistAloWise.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="logindistalolist" class="skilltrainingReports.ToolkitReportAction"
+			method="logindistalolist">
+			<result name="input">LoginDistAloWise.jsp</result>
+			<result name="success">LoginDistAloWiseWorkers.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		
+		<action name="AttReport" class="TrainingMaster.TrainingMasterAction"
+			method="AttReport">
+			<result name="success">AttedanceReport.jsp</result>
+			<result name="input">TakeAttendance.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<action name="TraininigApprovedReport" class="TrainingMaster.TrainingMasterAction"
+			method="TraininigApprovedReport">
+			<result name="success">TrainingApprovedReport.jsp</result>
+			<result name="input">TrainingApprovedList.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="DailyAttadance" class="TrainingMaster.TrainingMasterAction"
+			method="DailyAttadance">
+			<result name="success">SkilltrainingAttadanceReport.jsp</result>
+			<result name="input">TakeAttendance.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="Getuidath" class="serviceconsume.AttadanceService"
+			method="Getuidath">
+			<result name="input">TakeAttendance.jsp</result>
+			<result name="success">Auth_check.jsp</result>
+			<result name="error">Auth_check.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+ 		<action name="AdvtReprt" class="advt.ReportDao" method="AdvtReprt"> 
+ 			<result name="inupt">AdvtReport.jsp</result> 
+ 			<result name="success">AdvtReportAgencycall.jsp</result>
+			<result name="failure">error.jsp</result>
+ 			<result name="derror">error.jsp</result> 
+ 			<result name="invalidaction">InvalidAction.jsp</result> 
+ 			<result name="invalidata">InvalidData.jsp</result> 
+ 		</action>  
+		<action name="AdvtReprtDist" class="advt.ReportDao" method="AdvtReprtDist">
+			<result name="inupt">AdvtReport.jsp</result>
+			<result name="success">AdvtReportDist.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="AdvtReportWO" class="advt.ReportDao" method="AdvtReportWO">
+			<result name="inupt">AdvtReport.jsp</result>
+			<result name="success">AdvtReportWorkOrder.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="ImgDetails" class="advt.ReportDao" method="ImgDetails">
+			<result name="inupt">AdvtReport.jsp</result>
+			<result name="success">AdvtImgDetailsCall.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="AdvtDtReport" class="advt.ReportDao" method="AdvtDtReport">
+			<result name="inupt">AdvtReport.jsp</result>
+			<result name="success">AdvtImgDetailsCall.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="derror">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<!-- =========Trained Workers Aadhaar Report============ -->
+
+		<action name="SkillTraingReport" class="skilltrainingReports.SkilltrainingReportAction"
+			method="SkillTraingReport">
+			<result name="input">SkillTrainingReportInterface.jsp</result>
+			<result name="success">SkillTrainigReportCall.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+
+		<action name="SkillTrainingReportALO" class="skilltrainingReports.SkilltrainingReportAction"
+			method="SkillTrainingReportALO">
+			<result name="input">SkillTrainingReportInterface.jsp</result>
+			<result name="success">SkillTrainigReportALOCall.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invaliddata">InvalidData.jsp</result>
+		</action>
+		<action name="SkillTrainingReportWorkers" class="skilltrainingReports.SkilltrainingReportAction"
+			method="SkillTrainingReportWorkers">
+			<result name="input">SkillTrainingReportInterface.jsp</result>
+			<result name="success">SkillTrainigReportWorkersCall.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invaliddata">InvalidData.jsp</result>
+		</action>
+		<action name="STBatchWiseReport" class="skilltrainingReports.SkilltrainingReportAction"
+			method="STBatchWiseReport">
+			<result name="input">SkillTrainingBatchWiseReport.jsp</result>
+			<result name="success">SkillTrainingBRInclude.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+		<action name="TradeVsDist" class="skilltrainingReports.SkilltrainingReportAction"
+			method="TradeVsDist">
+			<result name="success">TradeVsDistRegist.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="exception">ExceptionPage.jsp</result>
+		</action>
+		
+	
+		<action name="LoginTradeReport" class="skilltrainingReports.ToolkitReportAction"
+			method="LoginTradeReport">
+			<result name="input">LoginTradeWiseReport.jsp</result>
+			<result name="success">LoginTradeWiseReport.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+			<result name="permission">authentication.jsp</result>
+		</action>
+		<!-- ====================search Reports=============================== -->
+
+		<action name="reg_search" class="skilltrainingReports.SkilltrainingReportAction"
+			method="reg_search">
+			<result name="input">SearchRegNoCircle.jsp</result>
+			<result name="success">SearchRegDetails.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="Worker_abstract" class="skilltrainingReports.SkilltrainingReportAction"
+			method="Worker_abstract">
+			<result name="success">workers_abstract.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="Dashboard" class="skilltrainingReports.SkilltrainingReportAction"
+			method="Dashboard">			
+			<result name="success">Dashboard.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="DashBoardReport" class="skilltrainingReports.SkilltrainingReportAction"
+			method="DashBoardReport">			
+			<result name="success">DashboardCall.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="SkillTrngClassAttr" class="skilltrainingReports.SkilltrainingReportAction"
+			method="SkillTrngClassAttr">			
+			<result name="success">AttedanceReport.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="RetiredWorksDistreport" class="userManagement.AdminActionsDirct"
+			method="RetiredWorksDistreport">
+			<result name="success">RetiredWrDist.jsp</result>
+			<result name="failure">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="class_cration" class="TrainingMaster.SessionActions"
+			method="class_cration">			
+			<result name="success">TrainingBatchForm_data.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<action name="proposed_wr" class="TrainingMaster.SessionActions"
+			method="proposed_wr">			
+			<result name="success">TrainingProposedForWorkers.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		
+		 <!-- Skill Training attendance report by naveen --> 
+      
+       <action name="skilltraining_attendance_report"  class="skilltrainingReports.Attendance_report" method="skilltraining_attendance_report">
+        <result name="success">/skilltraining_attendance_report.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+      <action name="district_agencies_details"  class="skilltrainingReports.Attendance_report" method="district_agencies_details">
+       <result name="success">/district_wise_agencies.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+      <action name="agencies_batches_details"  class="skilltrainingReports.Attendance_report" method="agencies_batches_details">
+       <result name="success">/agencies_wise_trainingbatches.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+      <action name="class_wise_workers"  class="skilltrainingReports.Attendance_report" method="class_wise_workers">
+       <result name="success">/class_wise_workers.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+       <action name="class_wise_workerslist"  class="skilltrainingReports.Attendance_report" method="class_wise_workerslist">
+       <result name="success">/class_wise_workersdetails.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+		<action name="RegServiceUsage"  class="claims.ClaimsReportsActions" method="RegServiceUsage">
+       <result name="success">/RegServiceUsageReport.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+		
+		<action name="MigratedStateReport"  class="Registration.Registration_Reports" method="MigratedStateReport">
+       <result name="success">/MigratedRegState.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        
+           <action name="retired_app_rej_report"  class="userManagement.Reg_Cancle" method="retired_app_rej_report">
+        <result name="inupt">retired_appr_rej_pen_report.jsp</result>
+        <result name="success">retired_appr_rej_pend_success.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+         <action name="retired_wr_abastract"  class="userManagement.Reg_Cancle" method="retired_wr_abastract">
+        <result name="success">retired_app_rej_report.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        <action name="cancel_wr_abastract"  class="userManagement.Reg_Cancle" method="cancel_wr_abastract">
+        <result name="success">retired_app_rej_report.jsp</result>
+        <result name="failure">error.jsp</result>
+        <result name="derror">error.jsp</result>     
+        </action>
+        <action name="DeviceCheck" class="TrainingMaster.TrainingMasterAction"
+			method="DeviceCheck">
+			<result name="success">TrainingBatchForm.jsp</result>
+			<result name="input">TrainingBatchForm.jsp</result>
+			<result name="invalidaction">InvalidAction.jsp</result>
+			<result name="invalidata">InvalidData.jsp</result>
+		</action>
+		<!-- =========================================================== -->
+		
+	</package>
+</struts>
